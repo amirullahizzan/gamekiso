@@ -31,23 +31,6 @@ void GameInit()
 	PlayMusic("data/bgm_town.mp3", DX_PLAYTYPE_LOOP);
 }
 
-void ChangeMusic()
-{
-	StopMusic();
-	if (bg_imageIndex == 0)
-	{
-		PlayMusic("data/bgm_town.mp3", DX_PLAYTYPE_LOOP);
-	}
-	if (bg_imageIndex == 1)
-	{
-		PlayMusic("data/atmosphere.wav", DX_PLAYTYPE_LOOP);
-	}
-	if (bg_imageIndex == 2)
-	{
-		PlayMusic("data/castle.wav", DX_PLAYTYPE_LOOP);
-	}
-}
-
 void GameUpdate()
 {
 	//	右キーでプレイヤー移動
@@ -62,9 +45,13 @@ void GameUpdate()
 		{
 			bg_imageIndex = 0;
 		}
-		ChangeMusic();
+		const char* bgm_file_name[3] = { "data/bgm_town.mp3","data/atmosphere.wav","data/castle.wav" };
+		StopMusic();
 
+		PlayMusic(bgm_file_name[bg_imageIndex], DX_PLAYTYPE_LOOP);
 	}
+	
+
 
 }
 //---------------------------------------------------------------------------------

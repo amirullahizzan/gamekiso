@@ -181,20 +181,18 @@ void GameRender()
 		DrawString(20, 340, "f3 : Resume/Fast Forward", GetColor(0, 255, 0));
 		DrawString(20, 360, "f4 : Restart Replay", GetColor(0, 255, 0));
 		DrawFormatString(20, 100, GetColor(0, 255, 255), "再生スピード　　：%d", frame_countmult);
+		DrawFormatString(20, 220, GetColor(0, 255, 255), "frame % 100 : %d", frame_count % 100);
 
 
 		PlaylistBar(frame_count);
 		PlaybackControl();
 		flickertimer++;
 		//	この文字列を点滅させます
-		if (flickertimer < 40)
+		if ((frame_count % 100 )< 70)
 		{
 			DrawString(200, 200, "「リプレイ中（この文字列を点滅させます）」", GetColor(255, 255, 0));
 		}
-		if (flickertimer > 80)
-		{
-			flickertimer = 0;
-		}
+		
 		break;
 	}
 	DrawGraphF(player_x, player_y, player_image, TRUE);
